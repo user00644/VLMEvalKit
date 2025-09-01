@@ -77,6 +77,7 @@ from .GUI.screenspot_pro import ScreenSpot_Pro
 from .mmifeval import MMIFEval
 from .chartmimic import ChartMimic
 from .m4bench import M4Bench
+from .refcoco import RefCOCO
 
 
 class ConcatDataset(ImageBaseDataset):
