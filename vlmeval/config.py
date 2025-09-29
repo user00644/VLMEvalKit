@@ -466,10 +466,17 @@ api_models = {
     # lmdeploy api
     "lmdeploy": partial(
         LMDeployAPI,
+        model="qwen3-vl-plus",
         api_base="http://0.0.0.0:23333/v1/chat/completions",
         temperature=0,
         retry=10,
     ),
+    # "qwen-lmdeploy": partial(
+    #     LMDeployAPI,
+    #     model=qwen3-vl-plus
+    #     temperature=0,
+    #     retry=10,
+    # ),
     "lmdeploy_internvl_78B_MPO": partial(
         LMDeployAPI,
         api_base="http://0.0.0.0:23333/v1/chat/completions",

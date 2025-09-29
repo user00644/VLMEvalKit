@@ -1,0 +1,20 @@
+# Git
+.git/
+.gitignore
+
+# VSCode
+.vscode/
+
+# Python cache and virtual environment
+__pycache__/
+*.pyc
+.venv/
+vlmeval.egg-info/
+
+# Outputs and logs
+outputs/
+*.log
+
+# Local scripts and installers
+Miniconda3-latest-Linux-x86_64.sh
+test_api.sh

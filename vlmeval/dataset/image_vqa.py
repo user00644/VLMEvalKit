@@ -301,9 +301,12 @@ class MathVista(ImageBaseDataset):
     TYPE = 'VQA'
     DATASET_URL = {
         'MathVista_MINI':
-        'https://opencompass.openxlab.space/utils/VLMEval/MathVista_MINI.tsv'
+        'https://opencompass.openxlab.space/utils/VLMEval/MathVista_MINI.tsv',
+        'MathVista_MINI_10':''
     }
-    DATASET_MD5 = {'MathVista_MINI': 'f199b98e178e5a2a20e7048f5dcb0464'}
+    DATASET_MD5 = {
+        'MathVista_MINI': 'f199b98e178e5a2a20e7048f5dcb0464',
+        }
 
     def evaluate(self, eval_file, **judge_kwargs):
         if judge_kwargs.get('use_verifier', False):
