@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  vlmeval:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: vlmeval-service
+    container_name: vlmeval-service
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./outputs:/app/outputs
+    environment:
+      LMDEPLOY_API_KEY: "sk-xxxxx"
+      LMDEPLOY_API_BASE: "https://your-lmdeploy-host/v1"
+      LMDEPLOY_MODEL_NAME: "internvl2-test"
+      OPENAI_API_KEY: "sk-judge-xxxxx"
+      OPENAI_API_BASE: "https://api.openai.com/v1"
+    restart: unless-stopped
