@@ -11,7 +11,7 @@ curl -s -X POST 'http://127.0.0.1:5001/submit' \
 	"judge_api_key": "sk-73f3e76569654254aad1cd02be77638d",
 	"judge_api_base": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
 	"judge_model_name": "qwen2.5-7b-instruct",
-	"LMUData": "/home/ubuntu/VLMEvalKit/LMUData",
+	"LMUData": "/app/LMUData",
 	"data": "MathVista_MINI_10",
 	"extra_args": {
 		"dry_run": false
@@ -73,13 +73,20 @@ curl -s "http://127.0.0.1:5001/results/$JOB" \
 
 
 sudo docker run -d \
-  --name vlmeval-service \
+  --name vlmeval-service-v3 \
+  -p 5001:5001 \
+  -v "$(pwd)/outputs":/app/outputs \
+  vlmeval-service:v3
+
+ docker exec -it vlmeval-service-v2 /bin/bash  
+
+
+sudo docker run --rm -it \
+  --name vlmeval-service:v2 \
   -p 5001:5001 \
   -v "$(pwd)/outputs":/app/outputs \
   vlmeval-service
-
- docker exec -it vlmeval-service /bin/bash  
-
+  
 
   # 构建并启动
 docker-compose up -d --build
@@ -89,4 +96,10 @@ docker-compose logs -f
 
 # 停止并移除容器（和网络）
 docker-compose down
+
+sudo docker build -t vlmeval-service:v3 ./docker/
+
+# 假设 Dockerfile 和 requirements.txt 都在当前目录
+sudo docker build -f ./docker/Dockerfile -t vlmeval-service:v3 .
+
 
